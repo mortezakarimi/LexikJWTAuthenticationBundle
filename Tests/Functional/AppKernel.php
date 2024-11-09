@@ -2,6 +2,7 @@
 
 namespace Lexik\Bundle\JWTAuthenticationBundle\Tests\Functional;
 
+use ApiPlatform\Metadata\Util\IriHelper;
 use ApiPlatform\Symfony\Bundle\ApiPlatformBundle;
 use Jose\Bundle\JoseFramework\JoseFrameworkBundle;
 use Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle;
@@ -100,17 +101,22 @@ class AppKernel extends Kernel
         ];
         if (class_exists(ApiPlatformBundle::class)) {
             $loader->load(function (ContainerBuilder $container) use (&$router) {
-                $container->prependExtensionConfig('api_platform', [
+                $config = [
                     'title' => 'LexikJWTAuthenticationBundle',
                     'description' => 'API Platform integration in LexikJWTAuthenticationBundle',
                     'version' => '1.0.0',
-                    'keep_legacy_inflector' => false,
                     'use_symfony_listeners' => true,
                     'formats' => [
                         'jsonld' => ['application/ld+json'],
-                        'json' => ['application/json']
+                        'json' => ['application/json'],
                     ]
-                ]);
+                ];
+
+                if (!class_exists(IriHelper::class)) {
+                    $config['keep_legacy_inflector'] = false;
+                }
+
+                $container->prependExtensionConfig('api_platform', $config);
                 $container->prependExtensionConfig('lexik_jwt_authentication', [
                     'api_platform' => [
                         'check_path' => '/login_check',
