@@ -96,6 +96,10 @@ class AutowiringTest extends TestCase
             'env(default::resolve:JWT_PUBLIC_KEY)' => __DIR__,
             'env(default::JWT_PASSPHRASE)' => 'dummy',
             'debug.file_link_format' => null,
+            'env(bool:default::SYMFONY_TRUST_X_SENDFILE_TYPE_HEADER)' => true,
+            'env(default::SYMFONY_TRUSTED_HOSTS)' => [],
+            'env(default::SYMFONY_TRUSTED_PROXIES)' => [],
+            'env(default::SYMFONY_TRUSTED_HEADERS)' => [],
         ]));
 
         $container->registerExtension(new SecurityExtension());
