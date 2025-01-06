@@ -1,7 +1,14 @@
 CHANGELOG
 =========
 
-For a diff between two versions https://github.com/lexik/LexikJWTAuthenticationBundle/compare/v1.0.0...v3.1.0
+For a diff between two versions https://github.com/lexik/LexikJWTAuthenticationBundle/compare/v1.0.0...v3.1.1
+
+## [3.1.1](https://github.com/lexik/LexikJWTAuthenticationBundle/tree/v3.1.1) (2025-01-06)
+
+* bug [\#1267](https://github.com/lexik/LexikJWTAuthenticationBundle/pull/1267) Fix wrongly silenced signing failure ([@BackEndTea](https://github.com/BackEndTea))
+* bug [\#1259](https://github.com/lexik/LexikJWTAuthenticationBundle/pull/1259) fix issue #1258 JWTCookieProvider does set flags cookie flags when value is false ([@mustapayev](https://github.com/mustapayev))
+* bug [\#1225](https://github.com/lexik/LexikJWTAuthenticationBundle/pull/1225) Fix default values in WebToken services when encryption disabled ([@NeuralClone](https://github.com/NeuralClone))
+* bug [\#1238](https://github.com/lexik/LexikJWTAuthenticationBundle/pull/1238) chore: add testrun for PHP 8.4. Fix implicit nullable parameter ([@Chris8934](https://github.com/Chris8934), [@chalasr](https://github.com/chalasr))
 
 ## [3.1.0](https://github.com/lexik/LexikJWTAuthenticationBundle/tree/v3.1.0) (2024-07-03)
 
