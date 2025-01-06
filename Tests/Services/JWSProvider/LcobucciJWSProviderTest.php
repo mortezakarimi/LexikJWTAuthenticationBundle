@@ -154,4 +154,20 @@ EOF
 
         return $jwsProvider->create($payload)->getToken();
     }
+
+    public function testUnSignedToken()
+    {
+        $keyLoaderMock = $this->getKeyLoaderMock();
+        $keyLoaderMock
+            ->expects($this->once())
+            ->method('loadKey')
+            ->willThrowException($e = new \InvalidArgumentException("It was not possible to parse your key, reason:\n* error:1E08010C:DECODER routines::unsupported"));
+
+        $jwsProvider = new self::$providerClass($keyLoaderMock, 'RS256', 3600, 0);
+        $payload = ['username' => 'chalasr', 'iat' => time()];
+
+        $this->expectExceptionObject($e);
+
+        $create =  $jwsProvider->create($payload);
+    }
 }
