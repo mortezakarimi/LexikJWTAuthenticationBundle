@@ -97,13 +97,9 @@ class LcobucciJWSProvider implements JWSProviderInterface
             $jws = $jws->withClaim($name, $value);
         }
 
-        $e = $token = null;
-        try {
-            $token = $this->getSignedToken($jws);
-        } catch (\InvalidArgumentException) {
-        }
+        $token = $this->getSignedToken($jws);
 
-        return new CreatedJWS((string) $token, null === $e);
+        return new CreatedJWS((string) $token, true);
     }
 
     /**
